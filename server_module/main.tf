@@ -27,7 +27,11 @@ sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 EOF
   user_data_replace_on_change = var.replace_userdata_on_change
-  tags = { Name = "${var.env} WebServer" }
+  tags = { 
+    Name    = "${var.env} WebServer" 
+    Owner   = var.owner
+    Project = var.project    
+    }
 }
 
 resource "aws_security_group" "wagtail_web_sg" {

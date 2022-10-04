@@ -48,3 +48,12 @@ variable "ssh_cidr" {
   default = ["0.0.0.0/0"]
 }
 
+variable "project" {
+  type = string
+  default = "Wagtail WebApp"
+}
+
+variable "owner" {
+  type = string
+  default = "Vladimir Nechay"
+}
