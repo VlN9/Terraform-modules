@@ -15,17 +15,7 @@ resource "aws_instance" "web_server" {
   instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.wagtail_web_sg.id]
   key_name               = data.aws_key_pair.my_key.key_name
-  user_data              =<<EOF
-#!/bin/bash
-sudo yum -y upgrade
-sudo amazon-linux-extras install docker
-sudo service docker start
-sudo usermod -a -G docker ec2-user
-sudo yum -y install git
-sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
-sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-EOF
+  user_data              = var.user_data
   user_data_replace_on_change = var.replace_userdata_on_change
   tags = { 
     Name    = "${var.env}-WebServer-${count.index + 1}" 
