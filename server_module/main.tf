@@ -28,7 +28,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 EOF
   user_data_replace_on_change = var.replace_userdata_on_change
   tags = { 
-    Name    = "${var.env} WebServer" 
+    Name    = "${var.env}-WebServer-${count.index + 1}" 
     Owner   = var.owner
     Project = var.project    
     }
