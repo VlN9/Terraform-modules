@@ -18,36 +18,6 @@ variable "env" {
   default = "dev"
 }
 
-variable "allow_ports" {
-  type = list
-  default = [80, 22]
-}
-
-variable "sg_cidr" {
-  type = list
-  default = ["0.0.0.0/0"]
-}
-
-variable "sg_protocol" {
-  type = string
-  default = "tcp"
-}
-
-variable "ssh_port" {
-  type = number
-  default = 22
-}
-
-variable "ssh_protocol" {
-  type = string
-  default = "tcp"
-}
-
-variable "ssh_cidr" {
-  type = list
-  default = ["0.0.0.0/0"]
-}
-
 variable "project" {
   type = string
   default = "Wagtail WebApp"
@@ -71,6 +41,7 @@ sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-c
 sudo chmod +x /usr/local/bin/docker-compose 
 EOF 
 }
+
 variable "security_groups" {
   default = []
 }
