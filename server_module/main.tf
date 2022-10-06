@@ -23,34 +23,3 @@ resource "aws_instance" "web_server" {
     Project = var.project    
     }
 }
-
-resource "aws_security_group" "wagtail_web_sg" {
-  name = "Web Security Group"
-  dynamic "ingress" {
-    for_each = var.allow_ports
-    content {
-      from_port   = ingress.value
-      to_port     = ingress.value
-      protocol    = var.sg_protocol
-      cidr_blocks = var.sg_cidr
-    }
-  }
-
-  ingress {
-    from_port = var.ssh_port
-    to_port = var.ssh_port
-    protocol = var.ssh_protocol
-    cidr_blocks = var.ssh_cidr
-  }
-
-  egress {
-      from_port        = 0
-      to_port          = 0
-      protocol         = "-1"
-      cidr_blocks      = ["0.0.0.0/0"]
-      self             = false
-    }
-  
-
-  tags = { Name = "${var.env} Security Group" }
-}
