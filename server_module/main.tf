@@ -13,7 +13,7 @@ resource "aws_instance" "web_server" {
   count                  = var.count_instances
   ami                    = data.aws_ami.latest_amazon_linux.id
   instance_type          = var.instance_type
-  vpc_security_group_ids = [aws_security_group.wagtail_web_sg.id]
+  vpc_security_group_ids = var.security_groups
   key_name               = data.aws_key_pair.my_key.key_name
   user_data              = var.user_data
   user_data_replace_on_change = var.replace_userdata_on_change
