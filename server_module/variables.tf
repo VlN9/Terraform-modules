@@ -84,3 +84,18 @@ variable "ebs_block_config" {
   type = list
   default = []
 }
+
+variable "ami_owner" {
+  default = ["137112412989"]
+}
+
+variable "ami_most_resent" {
+  default = true
+}
+
+variable "ami_filter" {
+  default = {
+    name = "name"
+    values = ["amzn2-ami-kernel-5.10-hvm-*-x86_64-gp2"]
+  }
+}

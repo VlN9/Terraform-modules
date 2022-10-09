@@ -1,9 +1,9 @@
 data "aws_ami" "latest_amazon_linux" {
-  owners      = ["137112412989"]
-  most_recent = true
+  owners      = var.ami_owner
+  most_recent = var.ami_most_resent
   filter {
-    name   = "name"
-    values = ["amzn2-ami-kernel-5.10-hvm-*-x86_64-gp2"]
+    name   = var.ami_filter["name"]
+    values = var.ami_filter["values"]
   }
 }
 
