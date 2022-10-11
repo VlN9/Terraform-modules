@@ -43,7 +43,7 @@ EOF
 }
 
 variable "security_groups" {
-  type = string
+  type = list
   default = []
 }
 
@@ -63,11 +63,13 @@ variable "ami_most_resent" {
 }
 
 variable "ami_filter" {
-  type = map
-  default = {
+  type = list
+  default = [
+    {
     name = "name"
     values = ["amzn2-ami-kernel-5.10-hvm-*-x86_64-gp2"]
-  }
+    }
+  ]
 }
 
 variable "key_pair_name" {
