@@ -7,7 +7,9 @@ data "aws_ami" "latest_amazon_linux" {
   }
 }
 
-data "aws_key_pair" "my_key" {}
+data "aws_key_pair" "my_key" {
+  name = var.key_pair_name
+}
 
 resource "aws_instance" "web_server" {
   count                  = var.count_instances

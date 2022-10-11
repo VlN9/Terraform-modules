@@ -43,41 +43,8 @@ EOF
 }
 
 variable "security_groups" {
+  type = string
   default = []
-}
-
-variable "ebs_delete_on_termination" {
-  type = bool
-  default = true
-}
-
-variable "ebs_device_name" {
-  type = string
-  default = null
-}
-
-variable "ebs_encrypted" {
-  description = "Encryption of EBS volume. Cannot be used with snapshot_id"
-  type = bool
-  default = false
-}
-
-variable "ebs_kms_key_id" {
-  default = null
-}
-
-variable "ebs_snapshot_id" {
-  default = null
-}
-
-variable "ebs_volume_size" {
-  type = number
-  default = 0
-}
-
-variable "ebs_volume_type" {
-  type = string
-  default = null
 }
 
 variable "ebs_block_config" {
@@ -86,16 +53,24 @@ variable "ebs_block_config" {
 }
 
 variable "ami_owner" {
+  type = list
   default = ["137112412989"]
 }
 
 variable "ami_most_resent" {
+  type    = bool
   default = true
 }
 
 variable "ami_filter" {
+  type = map
   default = {
     name = "name"
     values = ["amzn2-ami-kernel-5.10-hvm-*-x86_64-gp2"]
   }
+}
+
+variable "key_pair_name" {
+  type = string
+  default = "vln-key-ca-central-1"
 }
