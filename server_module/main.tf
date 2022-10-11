@@ -2,13 +2,13 @@ data "aws_ami" "latest_amazon_linux" {
   owners      = var.ami_owner
   most_recent = var.ami_most_resent
   filter {
-    name   = var.ami_filter["name"]
-    values = var.ami_filter["values"]
+    name   = var.ami_filter_name
+    values = var.ami_filter_values
   }
 }
 
 data "aws_key_pair" "my_key" {
-  name = var.key_pair_name
+  key_name = var.key_pair_name
 }
 
 resource "aws_instance" "web_server" {

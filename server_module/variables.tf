@@ -62,14 +62,14 @@ variable "ami_most_resent" {
   default = true
 }
 
-variable "ami_filter" {
+variable "ami_filter_name" {
+  type = string
+  default = "name"
+}
+
+variable "ami_filter_values" {
   type = list
-  default = [
-    {
-    name = "name"
-    values = ["amzn2-ami-kernel-5.10-hvm-*-x86_64-gp2"]
-    }
-  ]
+  default = ["amzn2-ami-kernel-5.10-hvm-*-x86_64-gp2"]
 }
 
 variable "key_pair_name" {
